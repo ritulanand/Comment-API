@@ -1,5 +1,9 @@
 import express from "express";
-import { authmiddlware } from "../middleware/authmiddleware";
+import { authmiddleware } from "../middleware/authmiddleware.js";
+import { commentController } from "../controller/comment.controller.js";
 
- const commentRouter = express.Router();
-export const commentroutes = commentRouter.post("/", authmiddlware,);
+const commentRouter = express.Router();
+
+commentRouter.post("/", authmiddleware, commentController.addComment);
+
+export const commentroutes = commentRouter;
