@@ -12,7 +12,7 @@
 
 import express from "express";
 import { commentroutes } from "./routes/comment.routes.js";
-import  { connectToDatabase } from "./config/index.js";
+import  { connectusingMongoose } from "./config/db.js";
 
 const server = express();
 
@@ -24,5 +24,5 @@ server.use("/comment", commentroutes);
 
 server.listen(3400, () => {
   console.log("Server started on port 3400");
-  connectToDatabase();
+  connectusingMongoose();
 });

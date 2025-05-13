@@ -1,11 +1,18 @@
 import mongoose from "mongoose";
 import commentSchema from "../schema/comment.schema.js";
 
-const comment = mongoose.model("Comment", commentSchema); // Create a model using the schema
+const comment = mongoose.model("Comment", commentSchema); 
+console.log("comment", comment);
 
-export const commentRepository = {
-  async saveComment(commentData) {
+export default class CommentRepository  {
+    constructor() {
+      console.log("this repo", this);
+        this.collection = "comment";
+    }
+   async saveComment(commentData) {
     const newComment = new comment(commentData);
-    return await newComment.save(); // Save the comment using the .save() method
-  },
+    console.log("new", newComment);
+    console.log("this collection", this.collection);
+    return await newComment.save(); 
+  }
 };
